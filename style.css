@@ -16,7 +16,7 @@ body {
 #bookContainer {
     background-color: #f6f6f6;
     height: 75vh;
-    width: 66vw;
+    min-width: 66vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
