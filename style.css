@@ -28,8 +28,42 @@ body {
     border-collapse: collapse;
     font-size: 0.9em;
     min-width: 66vw;
+    max-height: 85%;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
+}
+
+#middleContainer {
+    min-width: 66vw;
+    min-height: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bottomContainer {
+    min-width: 66vw;
+    min-height: 4%;
+    display: flex;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#addButton {
+    height: 75%;
+    width: 3em;
+    text-align: center;
+    background-color: #414288;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    border-radius: 9999px;
+    display: inline-block;
+    text-decoration: none;
+    padding: none;
+    margin: none;
 }
 
 .bookTable thead tr {
