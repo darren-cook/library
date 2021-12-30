@@ -19,60 +19,45 @@
                 <th>Rating</th>
             </thead>
             <tbody id="bookTable">
-                <tr class="sample">
-                    <td>Sample Title</td>
-                    <td>Sample Author</td>
-                    <td>100</td>
-                    <td>Read</td>
-                    <td>4.5/5</td>
-                </tr>
-                <tr class="sample">
-                    <td>Sample Title</td>
-                    <td>Sample Author</td>
-                    <td>200</td>
-                    <td>Not Read</td>
-                    <td>3.5/5</td>
-                </tr>
             </tbody>
         </table>
-        <div id="middleContainer">
-            <form id="newBookForm" class="hidden">
-                <div class="newBookFormInput inputText">
-                    <label for="newBookTitle">Title</label>
-                    <input type="text" id="newBookTitle">                   
-                </div>
-                <div class="newBookFormInput inputText">
-                    <label for="newBookAuthor">Author</label>
-                    <input type="text" id="newBookAuthor">
-                </div>
-                <div class="newBookFormInput inputNumber">
-                    <label for="newBookPages">Pages</label>
-                    <input type="number" id="newBookPages">
-                </div>
-                <div class="newBookFormInput inputOption">
-                    <label for="newBookRead">Status</label>
-                    <select id="newBookRead">
-                        <option value="true">Read</option>
-                        <option value="false">Not Read</option>
-                    </select>
-                </div>
-                <div class="newBookFormInput inputOption">
-                    <label for="newBookRating">Rating</label>
-                    <select id="newBookRating">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-            </form>
-            <button id=addButton>+</button>
-        </div>
-        <div id="bottomContainer">
-            <div id="tableTotals">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-        </div>
-   </div> 
+    </div>
+    <div id="tableTotals">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+    <div id="formContainer">
+        <form id="newBookForm" class="hidden">
+            <div class="newBookFormInput inputText">
+                <label for="newBookTitle">Title</label>
+                <input type="text" id="newBookTitle">                   
+            </div>
+            <div class="newBookFormInput inputText">
+                <label for="newBookAuthor">Author</label>
+                <input type="text" id="newBookAuthor">
+            </div>
+            <div class="newBookFormInput inputNumber">
+                <label for="newBookPages">Pages</label>
+                <input type="number" id="newBookPages">
+            </div>
+            <div class="newBookFormInput inputOption">
+                <label for="newBookRead">Status</label>
+                <select id="newBookRead">
+                    <option value="true">Read</option>
+                    <option value="false">Not Read</option>
+                </select>
+            </div>
+            <div class="newBookFormInput inputOption">
+                <label for="newBookRating">Rating</label>
+                <select id="newBookRating">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </form>
+    </div>
+   <button id=addButton class="addButton">+</button>
+   <button id="submitButton" class="addButton">✓</button>
 </body>
 </html>
