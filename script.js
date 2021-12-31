@@ -1,5 +1,6 @@
 const tableFull = document.querySelector("#bookTable");
 const newBookForm = document.querySelector("#formContainer");
+const tableTotals = document.querySelector("#tableTotals");
 
 const addButton = document.querySelector("#addButton");
 const submitButton = document.querySelector("#submitButton")
@@ -10,10 +11,8 @@ const newBookPagesForm = document.querySelector("#newBookPages");
 const newBookReadForm = document.querySelector("#newBookRead");
 const newBookRatingForm = document.querySelector("#newBookRating");
 
-
 let myLibrary = [];
 
-addBookToLibrary("Sample Title", "Sample Author", "xxx", "Not Read", "x/5")
 displayLibrary(myLibrary);
 
 function Book(title, author, pages, read, rating) {
@@ -35,6 +34,8 @@ function addBookToLibrary(title, author, pages, read, rating){
 function displayLibrary(libraryArray) {
     libraryArray.forEach(function(item){
         const tableRow = document.createElement("tr");
+        tableRow.dataset.index = myLibrary.length;
+        tableRow.className = "tableRow";
 
         const titleData = document.createElement("td");
         const authorData = document.createElement("td");
@@ -60,6 +61,8 @@ function displayLibrary(libraryArray) {
 
 function displayBook(libraryArrayIndex){
     const tableRow = document.createElement("tr");
+    tableRow.dataset.index = myLibrary.length;
+    tableRow.className = "tableRow";
 
     const titleData = document.createElement("td");
     const authorData = document.createElement("td");
@@ -84,6 +87,7 @@ function displayBook(libraryArrayIndex){
 
 addButton.addEventListener("click", function(){
     displaySubmitForm();
+    hideTableTotals();
 })
 
 submitButton.addEventListener("click", function(){
@@ -91,6 +95,7 @@ submitButton.addEventListener("click", function(){
     gatherData();
     clearData();
     displayBook(myLibrary[myLibrary.length-1]);
+    displayTableTotals();
 })
 
 function displaySubmitForm() {
@@ -109,7 +114,7 @@ function gatherData() {
     const newBookTitleData = newBookTitleForm.value;
     const newBookAuthorData = newBookAuthorForm.value;
     const newBookPagesData = newBookPagesForm.value;
-    const newBookReadData = newBookReadForm.value;
+    const newBookReadData = newBookReadForm.value === "true" ? "Read":"Not Read";
     const newBookRatingData = newBookRatingForm.value;
 
     addBookToLibrary(newBookTitleData, newBookAuthorData, newBookPagesData, newBookReadData, newBookRatingData);
@@ -122,4 +127,65 @@ function clearData() {
     newBookReadForm.value = "";
     newBookRatingForm.value = "";
 }
+
+function hideTableTotals() {
+    if (myLibrary.length === 0){
+        tableTotals.textContent = "";
+    }
+}
+
+function displayTableTotals() {
+    const bookTotal = myLibrary.length;
+    const authorTotal = tallyAuthors(myLibrary);
+    const pagesTotal = tallyPages(myLibrary);
+    const averageRating = tallyAverageRating(myLibrary);
+
+    tableTotals.textContent = `Book Count: ${bookTotal} | Author Count: ${authorTotal} | Page Total: ${pagesTotal} | Average Rating: ${averageRating}` 
+}
+
+function tallyAuthors(libraryArray) {
+    const uniqueAuthors = [];
+    libraryArray.forEach(function(item){
+        const author = item.author.toLowerCase();
+        if (uniqueAuthors.includes(author)) {
+            // break
+        } else {
+            uniqueAuthors.push(author);
+        }
+    })
+    return uniqueAuthors.length;
+}
+
+function tallyPages(libraryArray) {
+    let pageCount = 0;
+    libraryArray.forEach(function(item){
+        pageCount += Number(item.pages);
+    })
+    return pageCount;
+}
+
+function tallyAverageRating(libraryArray) {
+    let totalRating = 0;
+    let numOfRatings = libraryArray.length;
+    libraryArray.forEach(function(item){
+        totalRating += Number(item.rating);
+    })
+    return (totalRating/numOfRatings).toFixed(1);
+}
+
+
+
+
+// function removeIndex(index) {
+//     myLibrary.splice(index, 1);
+//     resetDisplayLibrary();
+//     // displayLibrary();
+// }
+
+// function resetDisplayLibrary() {
+//     const rows = document.getElementsByClassName("tableRow");
+//     for (i=0; i < rows.length; i++) {
+//         rows[i].remove();
+//     }
+// }
 

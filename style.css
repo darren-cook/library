@@ -37,8 +37,8 @@ body {
 #tableTotals {
     background-color: #f6f6f6;
     min-width: 66vw;
-    max-height: 10vh;
-    min-height: 10vh;
+    max-height: 8vh;
+    min-height: 8vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,8 +48,8 @@ body {
 #formContainer {
     background-color: #f6f6f6;
     min-width: 66vw;
-    max-height: 10vh;
-    min-height: 10vh;
+    max-height: 8vh;
+    min-height: 8vh;
     display: none;
     align-items: center;
     justify-content: center;
