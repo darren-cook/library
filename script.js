@@ -16,8 +16,6 @@ const newBookRatingForm = document.querySelector("#newBookRating");
 
 let myLibrary = [];
 
-displayLibrary(myLibrary);
-
 function Book(title, author, pages, read, rating) {
     this.title = title;
     this.author = author;
@@ -32,49 +30,6 @@ function Book(title, author, pages, read, rating) {
 function addBookToLibrary(title, author, pages, read, rating){
     const bookToAdd = new Book(title, author, pages, read, rating);
     myLibrary.push(bookToAdd);
-}
-
-function displayLibrary(libraryArray) {
-    libraryArray.forEach(function(item){
-        const tableRow = document.createElement("tr");
-        tableRow.className = "tableRow";
-        tableRow.dataset.index = myLibrary.length-1;
-
-        const titleData = document.createElement("td");
-        const authorData = document.createElement("td");
-        const pagesData = document.createElement("td");
-        const readData = document.createElement("td");
-        const ratingData = document.createElement("td");
-
-        titleData.textContent = item.title;
-        authorData.textContent = item.author;
-        pagesData.textContent = item.pages;
-        readData.textContent = item.read;
-        ratingData.textContent = item.rating;
-
-        const editButton = document.createElement("input");
-        const deleteButton = document.createElement("input");
-
-        editButton.type = "button";
-        editButton.className = "actionButton";
-        editButton.value = "edit";
-        editButton.dataset.index = myLibrary.length-1;
-
-        deleteButton.type = "button";
-        deleteButton.className = "actionButton";
-        deleteButton.value = "del";
-        deleteButton.dataset.index = myLibrary.length-1;
-
-        tableRow.appendChild(titleData);
-        tableRow.appendChild(authorData);
-        tableRow.appendChild(pagesData);
-        tableRow.appendChild(readData);
-        tableRow.appendChild(ratingData);
-        tableRow.appendChild(editButton);
-        tableRow.appendChild(deleteButton);
-
-        tableFull.appendChild(tableRow)
-    })
 }
 
 function displayBook(libraryArrayIndex){
@@ -221,6 +176,8 @@ tableFull.addEventListener("click", function(e){
 function deleteBook(libraryIndex) {
     myLibrary.splice(libraryIndex, 1);
     resetLibraryDisplay();
+    clearData();
+    hideSubmitForm();
 }
 
 function resetLibraryDisplay(){
