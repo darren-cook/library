@@ -27,11 +27,20 @@ body {
 }
 
 .bookTable {
+    table-layout: auto;
     border-collapse: collapse;
     font-size: 0.9em;
     min-width: 100%;
     max-height: 60vh;
     border-radius: 5px 5px 0 0;
+}
+
+.titleFull {
+    width: 17%;
+}
+
+.titleSmall {
+    width: 15%;
 }
 
 #tableTotals {
@@ -102,6 +111,27 @@ body {
 
 #submitButton {
     display: none;
+}
+
+#editButton {
+    display: none;
+}
+
+.actionButton {
+    margin: 1em;
+    font-size: 0.9em;
+    display: inline-block;
+    background-color: #414288;
+    color: white;
+    border: none;
+    padding: .25em;
+    cursor: pointer;
+    border-radius: .5em;
+    transition: 100ms;
+}
+
+.actionButton:hover{
+    transform: scale(1.1);
 }
 
 .bookTable thead tr {
